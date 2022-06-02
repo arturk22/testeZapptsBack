@@ -30,7 +30,7 @@ public class CartaREST {
 
     @GetMapping("/cartas")
     @ApiOperation(value = "Retorna lista")
-    public List<Carta> listar(Float preco, String nome){
+    public List<Carta> listar(String nome){
         if(nome == null){
             return repositorio.findByOrderByPrecoDesc();
         }else{
@@ -51,7 +51,7 @@ public class CartaREST {
             repositorio.save(carta);
     }
 
-    @DeleteMapping("/carta")
+    @DeleteMapping("/carta/{id}")
     @ApiOperation(value = "exclui carta")
     public void excluir(@RequestBody Carta carta){
         repositorio.delete(carta);

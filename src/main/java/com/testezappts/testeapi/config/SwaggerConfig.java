@@ -36,7 +36,7 @@ public class SwaggerConfig {
                 "API REST teste Zappts.",
                 "1.0",
                 "Terms of Service",
-                new Contact("Artur", "",
+                new Contact("Artur", "https://github.com/arturk22",
                         "alencar.artur00@gmail.com"),
                 "Apache License Version 2.0",
                 "https://www.apache.org/licesen.html", new ArrayList<VendorExtension>()

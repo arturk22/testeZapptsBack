@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Carta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
@@ -24,10 +24,10 @@ public class Carta {
     @Column(nullable = false)
     private String quantidade;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getNome() {
