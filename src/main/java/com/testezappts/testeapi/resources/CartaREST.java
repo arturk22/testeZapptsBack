@@ -1,4 +1,4 @@
-package com.testezappts.testeapi;
+package com.testezappts.testeapi.resources;
 
 
 import java.util.List;
@@ -21,14 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api")
-@Api(value = "API REST Carta")
+@RequestMapping(value = "/api")
+@Api(value = "API REST Cartas")
 @CrossOrigin(origins = "*")
 public class CartaREST {
     @Autowired
     private RepositorioCarta repositorio;
 
-    @GetMapping("/carta")
+    @GetMapping("/cartas")
     @ApiOperation(value = "Retorna lista")
     public List<Carta> listar(Float preco, String nome){
         if(nome == null){
@@ -45,14 +45,14 @@ public class CartaREST {
     }
 
     @PutMapping("/carta")
-    @ApiOperation(value = "Altera carta")
-    public void altear(@RequestBody Carta carta){
+    @ApiOperation(value = "altera carta")
+    public void altera(@RequestBody Carta carta){
         if(carta.getId()>0)
             repositorio.save(carta);
     }
 
     @DeleteMapping("/carta")
-    @ApiOperation(value = "Deleta carta")
+    @ApiOperation(value = "exclui carta")
     public void excluir(@RequestBody Carta carta){
         repositorio.delete(carta);
     }
