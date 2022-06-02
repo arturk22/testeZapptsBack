@@ -31,7 +31,6 @@ public class CartaREST {
         }
     }
 
-
     @PostMapping
     public void salvar(@RequestBody Carta carta){
         repositorio.save(carta);
