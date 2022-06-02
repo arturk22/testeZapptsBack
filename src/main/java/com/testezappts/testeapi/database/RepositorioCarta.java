@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositorioCarta extends JpaRepository<Carta,Long> {
 
-
-
     List<Carta> findByOrderByPrecoDesc();
     List<Carta> findByNome(String nome);
     List<Carta> findByNomeOrderByPrecoDesc(String nome);
