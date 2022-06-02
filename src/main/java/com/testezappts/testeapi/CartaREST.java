@@ -6,7 +6,11 @@ import java.util.List;
 import com.testezappts.testeapi.database.RepositorioCarta;
 import com.testezappts.testeapi.entidade.Carta;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/carta")
+@RequestMapping("/api")
+@Api(value = "API REST Carta")
+@CrossOrigin(origins = "*")
 public class CartaREST {
     @Autowired
     private RepositorioCarta repositorio;
 
-    @GetMapping
+    @GetMapping("/carta")
+    @ApiOperation(value = "Retorna lista")
     public List<Carta> listar(Float preco, String nome){
         if(nome == null){
             return repositorio.findByOrderByPrecoDesc();
@@ -31,18 +38,21 @@ public class CartaREST {
         }
     }
 
-    @PostMapping
+    @PostMapping("/carta")
+    @ApiOperation(value = "Salva carta")
     public void salvar(@RequestBody Carta carta){
         repositorio.save(carta);
     }
 
-    @PutMapping
-    public void aletar(@RequestBody Carta carta){
+    @PutMapping("/carta")
+    @ApiOperation(value = "Altera carta")
+    public void altear(@RequestBody Carta carta){
         if(carta.getId()>0)
             repositorio.save(carta);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/carta")
+    @ApiOperation(value = "Deleta carta")
     public void excluir(@RequestBody Carta carta){
         repositorio.delete(carta);
     }
